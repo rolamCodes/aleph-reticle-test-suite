@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { api } from "../convex/_generated/api";
 import Canvas from "./Canvas.tsx";
 import HowItWorks from "./HowItWorks.tsx";
+import ReticleTestApp from "./test-harness/ReticleTestApp.tsx";
+import "./test-harness/reticle-test.css";
 
 function SignedInApp() {
   const bootstrap = useMutation(api.users.bootstrap);
@@ -49,8 +51,50 @@ function SignedInApp() {
 }
 
 export default function App() {
+  const [showTestHarness, setShowTestHarness] = useState(
+    window.location.hash === "#reticle-test",
+  );
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setShowTestHarness(window.location.hash === "#reticle-test");
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  if (showTestHarness) {
+    return (
+      <>
+        <button
+          type="button"
+          className="test-harness-toggle-btn"
+          style={{ bottom: "16px", left: "auto", right: "16px" }}
+          onClick={() => {
+            window.location.hash = "";
+            setShowTestHarness(false);
+          }}
+        >
+          ← Return to Main Aleph App
+        </button>
+        <ReticleTestApp />
+      </>
+    );
+  }
+
   return (
     <>
+      <button
+        type="button"
+        className="test-harness-toggle-btn"
+        onClick={() => {
+          window.location.hash = "#reticle-test";
+          setShowTestHarness(true);
+        }}
+      >
+        🧪 Reticle Test Suite
+      </button>
+
       <AuthLoading>
         <div className="app-state">Loading…</div>
       </AuthLoading>
@@ -69,3 +113,4 @@ export default function App() {
     </>
   );
 }
+
