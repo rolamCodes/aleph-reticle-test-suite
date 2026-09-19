@@ -5,7 +5,8 @@ export type ReticleImplType =
   | "event-delegation"
   | "gpu-transform"
   | "viewport-math"
-  | "hybrid-smooth";
+  | "hybrid-smooth"
+  | "marketing-lerp-package";
 
 interface HUDProps {
   activeImpl: ReticleImplType;
@@ -73,6 +74,7 @@ export default function ReticleBenchmarkHUD({
           <option value="gpu-transform">3. GPU Hardware Acceleration (translate3d)</option>
           <option value="viewport-math">4. React Flow Viewport Math (Context-Node Math)</option>
           <option value="hybrid-smooth">5. Hybrid Ultra-Smooth (Lerp Motion Damping)</option>
+          <option value="marketing-lerp-package">6. Marketing Website Magnetic Trailing Follower (Lerp Spring + GPU)</option>
         </select>
       </div>
 
