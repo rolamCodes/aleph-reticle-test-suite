@@ -27,6 +27,7 @@ import ReticleImpl3_GPUTransform from "./reticle-implementations/ReticleImpl3_GP
 import ReticleImpl4_ViewportMath from "./reticle-implementations/ReticleImpl4_ViewportMath";
 import ReticleImpl5_HybridSmooth from "./reticle-implementations/ReticleImpl5_HybridSmooth";
 import ReticleImpl6_MagneticTrailingPackage from "./reticle-implementations/ReticleImpl6_MagneticTrailingPackage";
+import ReticleImpl7_HybridOriginalMagnetic from "./reticle-implementations/ReticleImpl7_HybridOriginalMagnetic";
 
 const nodeTypes = { context: ContextNode } satisfies NodeTypes;
 const edgeTypes = { interaction: InteractionEdge } satisfies EdgeTypes;
@@ -129,6 +130,9 @@ function ReticleTestCanvas() {
       {activeImpl === "hybrid-smooth" && <ReticleImpl5_HybridSmooth {...implProps} />}
       {activeImpl === "marketing-lerp-package" && (
         <ReticleImpl6_MagneticTrailingPackage {...implProps} />
+      )}
+      {activeImpl === "hybrid-original-magnetic" && (
+        <ReticleImpl7_HybridOriginalMagnetic {...implProps} />
       )}
     </div>
   );

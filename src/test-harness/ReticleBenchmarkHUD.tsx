@@ -6,7 +6,8 @@ export type ReticleImplType =
   | "gpu-transform"
   | "viewport-math"
   | "hybrid-smooth"
-  | "marketing-lerp-package";
+  | "marketing-lerp-package"
+  | "hybrid-original-magnetic";
 
 interface HUDProps {
   activeImpl: ReticleImplType;
@@ -75,6 +76,7 @@ export default function ReticleBenchmarkHUD({
           <option value="viewport-math">4. React Flow Viewport Math (Context-Node Math)</option>
           <option value="hybrid-smooth">5. Hybrid Ultra-Smooth (Lerp Motion Damping)</option>
           <option value="marketing-lerp-package">6. Marketing Website Magnetic Trailing Follower (Lerp Spring + GPU)</option>
+          <option value="hybrid-original-magnetic">7. Original Proximity + Package Trailing Lerp (Recommended)</option>
         </select>
       </div>
 
