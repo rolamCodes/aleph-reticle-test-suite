@@ -68,11 +68,11 @@ export default function ReticleBenchmarkHUD({
           value={activeImpl}
           onChange={(e) => onImplChange(e.target.value as ReticleImplType)}
         >
-          <option value="baseline">1. Baseline (Current Aleph querySelectorAll + rAF)</option>
-          <option value="event-delegation">2. Event Delegation & Target Rect Caching</option>
+          <option value="baseline">1. Baseline (Unfixed - 220ms CSS transition lag & thrashing)</option>
+          <option value="event-delegation">2. Corrected Proximity (0ms idle lag + Spatial Caching + 80px Lock-on)</option>
           <option value="gpu-transform">3. GPU Hardware Acceleration (translate3d)</option>
-          <option value="viewport-math">4. React Flow Viewport Math (Zero DOM Reading)</option>
-          <option value="hybrid-smooth">5. Hybrid Ultra-Smooth (Delegation + GPU + Lerp)</option>
+          <option value="viewport-math">4. React Flow Viewport Math (Context-Node Math)</option>
+          <option value="hybrid-smooth">5. Hybrid Ultra-Smooth (Lerp Motion Damping)</option>
         </select>
       </div>
 

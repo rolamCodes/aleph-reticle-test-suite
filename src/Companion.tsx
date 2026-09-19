@@ -249,12 +249,18 @@ export default function Companion({
     };
 
     const snapToWell = () => {
-      reticle.classList.add("reticle--snapped");
+      reticle.style.transition = "none";
+      well.style.transition = "none";
+      reticle.classList.remove("reticle--snapped");
       reticle.classList.add("reticle--on-well");
       setBox(reticle, boxFromElement(well, 0));
     };
 
     const applyIdle = (x: number, y: number) => {
+      // Disable CSS transitions in free cursor idle mode to eliminate 220ms lag
+      reticle.style.transition = "none";
+      well.style.transition = "none";
+
       const width = well.offsetWidth;
       const height = well.offsetHeight;
       const left = x - CURSOR_OFFSET - width;
@@ -262,7 +268,7 @@ export default function Companion({
       if (well.style.left !== "" && well.style.top !== "") {
         snapToWell();
       } else {
-        reticle.classList.add("reticle--snapped");
+        reticle.classList.remove("reticle--snapped");
         reticle.classList.add("reticle--on-well");
         setBox(reticle, { left, top, width, height });
       }
@@ -270,6 +276,12 @@ export default function Companion({
     };
 
     const applySnap = (focus: Box) => {
+      // Enable CSS transitions for snapping onto target elements
+      reticle.style.transition =
+        "left 220ms cubic-bezier(0.22, 1.15, 0.36, 1), top 220ms cubic-bezier(0.22, 1.15, 0.36, 1), width 180ms ease, height 180ms ease";
+      well.style.transition =
+        "left 220ms cubic-bezier(0.22, 1.15, 0.36, 1), top 220ms cubic-bezier(0.22, 1.15, 0.36, 1)";
+
       reticle.classList.add("reticle--snapped");
       reticle.classList.remove("reticle--on-well");
       setBox(reticle, focus);
