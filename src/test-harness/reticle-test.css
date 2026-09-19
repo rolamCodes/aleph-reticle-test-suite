@@ -125,24 +125,3 @@
   outline: 2px dashed #f43f5e !important;
 }
 
-.test-harness-toggle-btn {
-  position: fixed;
-  bottom: 16px;
-  left: 16px;
-  z-index: 9999;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-  transition: transform 0.15s, background 0.15s;
-}
-
-.test-harness-toggle-btn:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
-}
